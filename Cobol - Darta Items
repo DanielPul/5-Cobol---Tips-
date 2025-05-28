@@ -1,0 +1,36 @@
+// all credito to: https://www.ibmmainframer.com/cobol-tutorial/cobol-data-items/
+
+//
+ata Items - User defined variables:
+The main objectives of the chapter are:
+
+Identify the various data items in a COBOL program.
+
+Example 1:
+05 W01-STRING PIC X(20) VALUE 'ABC'.
+
+05 -> Level Number
+
+W01-STRING -> Data Name
+
+PIC X(20) -> Picture Clause
+
+VALUE 'ABC' -> Value Clause
+
+The Variable W01-STRING is of Character Type(X) and of length twenty(20). The prefix W denotes that the variable belongs to Working Storage section. It is not mandatory to start the variable name with 'W'. this is just for reference. The VALUE clause assigns the default value as 100.
+
+Example 2:
+01 W02-NUM PIC 9(03) VALUE 100.
+
+01 -> Level Number
+
+W02-NUM -> Data Name
+
+PIC 9(03) -> Picture Clause
+
+VALUE 100 -> Value Clause
+
+The Variable W02-NUM is of Numeric Type(9) and of length three(03). The prefix W denotes that the variable belongs to Working Storage section. The VALUE clause assigns the default value as 100.
+
+Thank you
+Daniel Pulido
