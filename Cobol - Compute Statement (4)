@@ -1,0 +1,85 @@
+// Credit to https://www.ibmmainframer.com/cobol-tutorial/cobol-compute-statement/
+
+he COMPUTE statement assigns the value of an arithmetic expression to one or more data items.
+
+Arithmetic operations can be combined without the restrictions on receiving data items imposed by the rules for the ADD, SUBTRACT, MULTIPLY, and DIVIDE statements with the COMPUTE statement.
+
+When arithmetic operations are combined, the COMPUTE statement can be more efficient than the separate arithmetic statements written in a series.
+
+Syntax:
+COMPUTE identifier-1 [ROUNDED]  =[EQUAL] arithmetic expression
+	[ON SIZE ERROR imperative-statement-1]
+        [NOT ON SIZE ERROR imperative-statement-2]
+[END-COMPUTE]
+
+identifier-1
+Must name an elementary numeric item or an elementary numeric-edited item.
+
+Can name an elementary floating-point data item.
+
+arithmetic-expression
+Can be any arithmetic expression, as defined in Arithmetic expressions.
+
+When the COMPUTE statement is executed, the value of arithmetic expression is calculated and stored as the new value of each data item referenced by identifier-1.
+
+Optional phrases in compute operation:
+
+ROUNDED phrase
+With ROUNDED option, the computer will always round the result to the PICTURE clause specification of the receiving field. It is usually coded after the field to be rounded.
+
+SIZE ERROR phrases
+If this is coded with any operation that ended with SIZE error will not be carried out but the statement follows ON SIZE ERROR will be executed.
+
+NOT ON SIZE ERROR phrases
+This is opposite to SIZE ERROR. If this is coded with any operation that not ended with SIZE error, then the statement follows ON SIZE ERROR will be executed.
+
+END-COMPUTE phrase
+This explicit scope terminator serves to delimit the scope of the COMPUTE statement. END-COMPUTE permits a conditional COMPUTE statement to be nested in another conditional statement. END-COMPUTE can also be used with an imperative COMPUTE statement.
+
+
+Tips:
+If only one mathematical operation is to be performed, use the statement that performs that operation (ADD, SUBTRACT, MULTIPLY, or DIVIDE). Reserve the COMPUTE statement for formulas or exponentiation, since it has no separate statement associated with it.
+
+Receiving fields may be either numeric or numeric edited fields.
+
+Use the SIZE ERROR clause to detect field overflow on the receiving field.
+
+In all formats, the mathematically correct results are computed, but if the receiving field is too short in either the integer or decimal portion, the result will be truncated, the integer on the left and the decimal on the right.
+
+Including the ROUNDED phrase will result the answer field being rounded instead of truncating. Roundig is always done in the least significant portion of the answer.
+
+
+Example:
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. TSTCOMPT.
+
+DATA DIVISION.
+   WORKING-STORAGE SECTION.
+   01 WS-N1 PIC 9(3) VALUE 5.
+   01 WS-N2 PIC 9(4) VALUE 7.
+   01 WS-N3 PIC 9(4) VALUE 8.
+   01 WS-NA PIC 9(3) VALUE 80.
+   01 WS-NB PIC 9(3) VALUE 20.
+   01 WS-NC PIC 9(3).
+
+PROCEDURE DIVISION.
+   COMPUTE WS-NC= (WS-N1 * WS-N2) - (WS-NA / WS-NB) + WS-N3.
+   DISPLAY "WS-NUM1     : " WS-N1
+   DISPLAY "WS-NUM2     : " WS-N2
+   DISPLAY "WS-NUM3     : " WS-N3
+   DISPLAY "WS-NUMA     : " WS-NA
+   DISPLAY "WS-NUMB     : " WS-NB
+   DISPLAY "Result of compute is     : " WS-NC
+   STOP RUN.
+
+
+Output:
+
+WS-NUM1     : 005
+WS-NUM2     : 0007
+WS-NUM3     : 0008
+WS-NUMA     : 080
+WS-NUMB     : 020
+Result of compute is     : 039
+
