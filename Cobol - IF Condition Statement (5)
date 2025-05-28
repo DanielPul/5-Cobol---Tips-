@@ -1,0 +1,133 @@
+// Credit to:https://www.ibmmainframer.com/cobol-tutorial/cobol-if-condition-statement/
+
+If condition statement is used to check for a condition if a condition is true, the IF block is executed, and if the condition is false, the ELSE block is executed.
+
+IF statement mainly has three types based on its usage in the COBOL program:
+
+Simple IF:
+Simple IF is mainly used to execute the condition related code.
+If the condition is true, then it will execute the set of statements written in the IF block.
+
+If condition is not satisfied, the control will transfer to the next statements after the IF statement terminated.
+
+Syntax:
+IF Condition
+    {Statement Block}
+[END-IF].
+
+
+Here, END-IF is the scope terminator, which is optional in the program. The period (.) can be defined at the last statement of IF block.
+
+If we didn't specify the period, then scope terminator END-IF is mandatory.
+
+Example:
+IF GENDER = 'MALE'
+    DISPLAY “HE IS A MALE”
+END-IF.
+
+
+IF ELSE:
+IF ELSE statement is used when a certain set of statements needed to be executed by two conditions. This statement is mainly used to execute the condition-specific code.
+
+In IF-ELSE, the block of statements will be executed if the specified condition is true. If the condition is false, the other set of statements will be executed, and those set will be under the ELSE block.
+
+Syntax:
+IF Condition-1
+    {Statement-Block-1/NEXT SENTENCE}
+[ELSE]
+    {Statement-Block-2/NEXT SENTENCE}
+[END-IF].
+
+
+
+Nested IF:
+Like other COBOL programming languages, COBOL also allows the nested IF statement. IF statement within the IF statement called as nested IF statement. There is no bound to the depth of nested IF statements.
+
+Syntax:
+
+IF Condition-1 THEN
+    IF Condition-2 THEN
+        Statements-block-1
+    [ELSE
+        Statements-block-2
+    END-IF]
+[ELSE
+    IF Condition-3 THEN
+        Statements-block-3
+    [ELSE
+        Statements-block-4
+    END-IF]
+END-IF.]
+
+Example 1: Let's see an example for IF condition statement in the COBOL program.
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. TSTHELLO.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 WS-NUM1 PIC 9(9).
+01 WS-NUM2 PIC 9(9).
+01 WS-NUM3 PIC 9(5).
+01 WS-NUM4 PIC 9(6).
+
+PROCEDURE DIVISION.
+A000-FIRST-PARA.
+    MOVE 25 TO WS-NUM1 WS-NUM3.
+    MOVE 15 TO WS-NUM2 WS-NUM4.
+
+    IF WS-NUM1 > WS-NUM2 THEN
+       DISPLAY 'IN LOOP 1 - IF BLOCK'
+
+       IF WS-NUM3 = WS-NUM4 THEN
+          DISPLAY 'IN LOOP 2 - IF BLOCK'
+       ELSE
+          DISPLAY 'IN LOOP 2 - ELSE BLOCK'
+       END-IF
+
+    ELSE
+       DISPLAY 'IN LOOP 1 - ELSE BLOCK'
+    END-IF.
+
+    STOP RUN.
+
+When you compile and execute the above program, it produces the following result −
+
+Output:
+
+IN LOOP 1 - IF BLOCK
+IN LOOP 2 - ELSE BLOCK
+Example 2: Let's see another simple example for IF condition statement.
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. TSTHELLO.
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 CHECK-GENDER.
+   05 GENDER PIC X(1).
+      88 MALE VALUE 'M'.
+      88 FEMALE VALUE 'F'.
+
+PROCEDURE DIVISION.
+0000-MAIN-PARA.
+     SET FEMALE TO TRUE.
+     IF MALE
+        DISPLAY "Gender: Male"
+     ELSE
+        DISPLAY "Gender: Female"
+     END-IF.
+     STOP RUN.
+
+When you compile and execute the above program, it produces the following result −
+
+Output:
+
+Gender: Female
+
+
+
+Thank you!
+Daniel Pulido
+
+
