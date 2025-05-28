@@ -1,0 +1,49 @@
+// Credit to: https://www.ibmmainframer.com/cobol-tutorial/cobol-arithmetic-expressions/
+
+
+
+
+Arithmetic Expressions may consist of any of the following:
+
+An identifier described as a numeric elementary item.
+
+A numeric literal.
+
+Identifiers and literals separated by arithmetic operators.
+
+Two arithmetic expressions separated by an arithmetic operator.
+
+An arithmetic expression enclosed in parentheses.
+Arithmetic Operators:
+
+Following are the arithmetic operators:
+BINARY: + - * / **
+
+UNARY: + -
+
+Precedence
+
+Unary
+
+Exponentiation
+
+Multiplication and Division
+
+Addition and Subtraction
+
+Arithmetic Statements
+
+Arithmetic statements are of five kinds:
+ADD
+
+SUBTRACT
+
+MULTIPLY
+
+DIVIDE
+
+COMPUTE
+
+
+Thank you!
+Daniel Pulido 
