@@ -1,0 +1,27 @@
+// all the credit to https://www.ibmmainframer.com/cobol-tutorial/cobol-hello-world/
+
+Cobol Progam //
+//
+
+IDENTIFICATION DIVISION.
+PROGRAM-ID. IDSAMPLE.
+ENVIRONMENT DIVISION.
+PROCEDURE DIVISION.
+    DISPLAY 'HELLO WORLD'.
+    STOP RUN.
+
+Explanation:
+Line 1 : IDENTIFICATION DIVISION. - this division is mandatory.
+
+Line 2 : PROGRAM-ID. IDSAMPLE. - it is mandatory to declare the program id name-IDSAMPLE in indentification division. usually this name is same as PDS member name(file name).
+
+Line 3 : ENVIRONMENT DIVISION. - this division is optional.
+
+Line 4 : PROCEDURE DIVISION. - this division is mandatory.
+
+Line 5 : DISPLAY 'HELLO WORLD'. - DISPLAY statement used to transfer the data to the output device/screen. Output device can be decided based on the SYSOUT in JCL if it is a batch program. Here display statement is used to diplay hardcoded value 'HELLO WORLD'.
+
+Line 6 : STOP RUN. - End of program. It is mandatoy to add at the end of program. This is the last executable statement in the program which will returns the control back to OS. STOP RUN always coded in the main program. If STOP RUN coded in the sub program, the control will return to OS instead of returning to main program.
+
+Thank you! 
+Daniel 
